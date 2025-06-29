@@ -1,5 +1,7 @@
 [config]
-packages = ["python"]
+install_packages = ["python"]
+uninstall_packages = ["python-pip"]
+ignore_if_missing = false
 
 [[config.repositories]]
 Name = 'jp7-arch'
