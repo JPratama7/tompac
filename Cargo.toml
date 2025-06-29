@@ -1,0 +1,11 @@
+[package]
+name = "tompac"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+alpm = { version = "4.0.3", features = ["static", "default"] }
+pacmanconf = "3.0.0"
+serde = { version = "1.0.219", features = ["derive"] }
+toml = "0.8"
