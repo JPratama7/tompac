@@ -4,11 +4,16 @@ use serde::{Deserialize, Serialize};
 #[non_exhaustive]
 pub struct Configuration {
     pub config: Config,
+    #[serde(default)]
+    pub ignore_if_missing: bool
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
 #[non_exhaustive]
 pub struct Config {
+    #[serde(rename = "uninstall_packages")]
+    pub remove_packages: Vec<String>,
+    #[serde(rename = "install_packages")]
     pub packages: Vec<String>,
     pub repositories: Vec<Repository>,
     pub pacman: PacmanConfiguration,
