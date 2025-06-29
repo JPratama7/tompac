@@ -1,0 +1,45 @@
+[config]
+packages = ["python"]
+
+[[config.repositories]]
+Name = 'jp7-arch'
+SigLevel = "Required"
+Server = ["https://repo.archlinux.jp/$repo/os/$arch", "https://repo.archlinux.jp/$repo/os/$arch"]
+
+[[config.repositories]]
+Name = 'okayama-arch'
+SigLevel = "Required"
+Server = ["https://repo.archlinux.jp/$repo/os/$arch", "https://repo.archlinux.jp/$repo/os/$arch"]
+
+
+[config.pacman]
+HoldPkg = ["pacman", "glibc"]
+CleanMethod = "KeepInstalled"
+Architecture = "auto"
+
+# Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
+IgnorePkg = []
+IgnoreGroup = []
+
+NoUpgrade = []
+NoExtract = []
+
+# Misc options
+UseSyslog = false
+Color = true
+NoProgressBar = false
+CheckSpace = true
+VerbosePkgLists = true
+ParallelDownloads = 5
+DownloadUser = "alpm"
+DisableSandbox = false
+
+# Signature verification settings
+SigLevel = "Required DatabaseOptional"
+LocalFileSigLevel = "Optional"
+RemoteFileSigLevel = "Required"
+
+# Key initialization note (non-config, just informational)
+# NOTE: You must run `pacman-key --init` before first using pacman; the local
+# keyring can then be populated with the keys of all official Arch Linux
+# packagers with `pacman-key --populate archlinux`.
