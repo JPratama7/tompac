@@ -4,8 +4,6 @@ use serde::{Deserialize, Serialize};
 #[non_exhaustive]
 pub struct Configuration {
     pub config: Config,
-    #[serde(default)]
-    pub ignore_if_missing: bool
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
@@ -17,6 +15,8 @@ pub struct Config {
     pub packages: Vec<String>,
     pub repositories: Vec<Repository>,
     pub pacman: PacmanConfiguration,
+    #[serde(default)]
+    pub ignore_if_missing: bool
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
@@ -48,13 +48,18 @@ pub struct PacmanConfiguration {
     pub no_progress_bar: bool,
     pub check_space: bool,
     pub verbose_pkg_lists: bool,
+    #[serde(default = "default_parallel_downloads")]
     pub parallel_downloads: u32,
-    pub download_user: String,
     pub disable_sandbox: bool,
+    pub download_user: String,
 
     pub sig_level: String,
     pub local_file_sig_level: String,
     pub remote_file_sig_level: String,
+}
+
+fn default_parallel_downloads() -> u32 {
+    10
 }
 
 impl Configuration {
