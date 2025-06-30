@@ -148,8 +148,6 @@ impl Export for Config {
                 result.push_str(&format!("SigLevel = {}\n", i.sig_level.join(" ")));
             }
 
-            
-            println!("{:?}", i.usage);
             if !i.usage.is_empty(){
                 result.push_str(&format!("Usage = {}\n", i.usage.join(" ")));
             }
